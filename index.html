@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Temperatura</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; line-height: 1.6; }
+        .container { max-width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        input { padding: 8px; margin-right: 10px; width: 100px; }
+        button { padding: 8px 15px; cursor: pointer; }
+        #resultado { margin-top: 20px; font-weight: bold; color: #2c3e50; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Conversor Celsius a Fahrenheit</h2>
+    <form id="tempForm">
+        <label for="celsius">Grados Celsius:</label>
+        <input type="number" id="celsius" step="any" placeholder="Ej. 25" required>
+        <button type="submit">Convertir</button>
+    </form>
+
+    <div id="resultado"></div>
+</div>
+
+<script>
+    document.getElementById('tempForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que el formulario se envíe y recargue la página
+
+        // 1. Leer el valor del formulario
+        const celsius = parseFloat(document.getElementById('celsius').value);
+
+        // 2. Aplicar la fórmula
+        const fahrenheit = (celsius * 9/5) + 32;
+
+        // 3. Imprimir el resultado con el formato solicitado
+        // Formateamos a un decimal (.toFixed(1)) para coincidir con el ejemplo (77.0)
+        const salida = `${celsius} Celsius = ${fahrenheit.toFixed(1)} Fahrenheit`;
+        
+        document.getElementById('resultado').innerText = salida;
+    });
+</script>
+
+</body>
+</html>
